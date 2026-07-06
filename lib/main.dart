@@ -16,8 +16,14 @@ class BareKnuckleFishFightApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
       home: Scaffold(
-        body: GameWidget(
-          game: BKFFGame(),
+        backgroundColor: Colors.black,
+        body: Center(
+          child: AspectRatio(
+            aspectRatio: 16 / 9,
+            child: GameWidget(
+              game: BKFFGame(),
+            ),
+          ),
         ),
       ),
     );
