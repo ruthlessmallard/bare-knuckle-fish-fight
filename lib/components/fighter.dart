@@ -18,6 +18,9 @@ class Fighter extends PositionComponent with HasGameRef {
   bool thumbDown = false;
   Vector2 thumbStartPos = Vector2.zero();
   static const double retouchThreshold = 30; // pixels
+  
+  // Animation timer
+  double bobTimer = 0;
 
   Fighter({required Vector2 position})
       : super(
@@ -156,6 +159,7 @@ class Fighter extends PositionComponent with HasGameRef {
     }
     
     // Subtle head bob animation
-    head.position.y = 10 + (gameRef.currentTime().inMilliseconds % 1000 / 1000) * 2;
+    bobTimer += dt;
+    head.position.y = 10 + (bobTimer % 1.0) * 2;
   }
 }
