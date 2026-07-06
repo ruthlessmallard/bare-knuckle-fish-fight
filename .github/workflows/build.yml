@@ -17,6 +17,15 @@ jobs:
           flutter-version: '3.22.0'
           channel: 'stable'
       
+      # Ensure AndroidX properties are set
+      - name: Setup AndroidX
+        run: |
+          echo "android.useAndroidX=true" >> android/gradle.properties
+          echo "android.enableJetifier=true" >> android/gradle.properties
+      
+      # Clean any cached builds
+      - run: flutter clean
+      
       - run: flutter pub get
       - run: flutter build apk --release
       
